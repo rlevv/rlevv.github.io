@@ -88,7 +88,7 @@ author:
   avatar           : "/images/bio-pic-2.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Data Portfolio"
   location         : "Brooklyn, NY"
-  email            : rlevitt97@gmail.com
+  email            : "rlevitt97@gmail.com"
   uri              :
   home             : # null (default), "absolute or relative url to link to author home"
   bitbucket        :
@@ -97,7 +97,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "https://github.com/rlevv"
+  github           : "rlevv"
   gitlab           :
   google_plus      :
   keybase          :
@@ -106,7 +106,7 @@ author:
   linkedin         :  "rlevv"
   pinterest        :
   soundcloud       :
-  stackoverflow    : 10782802/rlevv
+  stackoverflow    : "10782802/rlevv"
   steam            : # "steamId" (the last part of your profile url, e.g. https://steamcommunity.com/id/steamId/)
   tumblr           :
   twitter          :
