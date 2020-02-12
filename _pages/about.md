@@ -5,6 +5,4 @@ header:
   image: "/images/zakim.jpg"
 ---
 
-I'm a senior data scientist who excels at data wrangling, machine learning, exploratory analysis, and data visualizations.
-
-Etc, etc, etc
+I'm a senior at Vassar College interested in data analysis. You'll find here projects that I'm working on, articles/papers that I'm reading, and things that I'm thinking––all data-related or data-adjacent. 
