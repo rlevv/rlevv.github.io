@@ -1,55 +1,915 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-12T20:33:42-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ryan Levitt</title><subtitle>Data Portfolio</subtitle><author><name>Ryan Levitt</name><email>rlevitt97@gmail.com</email></author><entry><title type="html">Data Wrangling Project</title><link href="http://localhost:4000/perceptron/" rel="alternate" type="text/html" title="Data Wrangling Project" /><published>2018-01-28T00:00:00-05:00</published><updated>2018-01-28T00:00:00-05:00</updated><id>http://localhost:4000/perceptron</id><content type="html" xml:base="http://localhost:4000/perceptron/">&lt;h1 id=&quot;h1-heading&quot;&gt;H1 Heading&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-17T06:28:27-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ryan Levitt</title><subtitle>Data Portfolio</subtitle><author><name>Ryan Levitt</name><email>rlevitt97@gmail.com</email></author><entry><title type="html">Makeover Monday 2020 Week 6 –– What Percentage of Your Life Has Been Spent in American Wartime?</title><link href="http://localhost:4000/MoM1/" rel="alternate" type="text/html" title="Makeover Monday 2020 Week 6 –– What Percentage of Your Life Has Been Spent in American Wartime?" /><published>2020-02-10T00:00:00-05:00</published><updated>2020-02-10T00:00:00-05:00</updated><id>http://localhost:4000/MoM1</id><content type="html" xml:base="http://localhost:4000/MoM1/">&lt;p&gt;For this week’s challenge, we are looking at the percentage of lifetime according to birth year where the USA was at war.&lt;/p&gt;
 
-&lt;h2 id=&quot;h2-heading&quot;&gt;H2 Heading&lt;/h2&gt;
+&lt;p&gt;Source Article: &lt;a href=&quot;https://www.washingtonpost.com/politics/2020/01/08/nearly-quarter-americans-have-never-experienced-us-time-peace/&quot;&gt;Nearly a quarter of Americans have never experienced the U.S. in a time of peace&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;h3-heading&quot;&gt;H3 Heading&lt;/h3&gt;
+&lt;p&gt;Data Source: &lt;a href=&quot;https://www.washingtonpost.com/&quot;&gt;Washington Post&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Here’s some basic text.&lt;/p&gt;
+&lt;p&gt;Makeover Monday Data: &lt;a href=&quot;https://data.world/makeovermonday/2020w6&quot;&gt;data.world&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;And here’s some &lt;em&gt;italics&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;My Github Repository: &lt;a href=&quot;https://github.com/rlevv/Makeover_Monday/tree/master/2020W6-US_Wartime_Living&quot;&gt;US Wartime Living Repo&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Here’s some &lt;strong&gt;bold&lt;/strong&gt; text.&lt;/p&gt;
+&lt;p&gt;My Final Tableau Visualization: &lt;a href=&quot;https://public.tableau.com/views/2020W6-US_Wartime_Living/USWartimeLife?:display_count=y&amp;amp;publish=yes&amp;amp;:origin=viz_share_link&quot;&gt;US Wartime Visualization&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;What about a &lt;a href=&quot;https://github.com/dataoptimal&quot;&gt;link&lt;/a&gt;?&lt;/p&gt;
+&lt;p&gt;The original visualization lacks clarity with respect to how specific wars impact the overall total percent of life spent in wartime. There is a ring around year year’s pie chart with a legend above, but the lines are pretty difficult to make out and trying to parse which lines correspond to which wars is difficult.&lt;/p&gt;
 
-&lt;p&gt;Here’s a bulleted list:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;First item&lt;/li&gt;
-  &lt;li&gt;Second item&lt;/li&gt;
-  &lt;li&gt;Third item&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;I decided to do a superficial exploration of the data and then let my findings inform a different kind of visualization that maybe leads to new takeaways. This post contains most of my results, but for the full Python script, check out the repository linked above.&lt;/p&gt;
 
-&lt;p&gt;Here’s a numbered list:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;First&lt;/li&gt;
-  &lt;li&gt;Second&lt;/li&gt;
-  &lt;li&gt;Third&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h2 id=&quot;data-analysis&quot;&gt;Data Analysis&lt;/h2&gt;
 
-&lt;p&gt;Python code block:&lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
+&lt;h3 id=&quot;looking-at-the-data&quot;&gt;Looking at the Data:&lt;/h3&gt;
 
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Here is quick overview of the Excel file that we were given. It is pre-cleaned and straightforward.&lt;/p&gt;
 
-&lt;p&gt;R code block:&lt;/p&gt;
-&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tidyverse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;some_file.csv&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div&gt;
+&lt;style scoped=&quot;&quot;&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-&lt;p&gt;Here’s some inline code &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x+y&lt;/code&gt;.&lt;/p&gt;
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-&lt;p&gt;Here’s an image:
-&lt;img src=&quot;http://localhost:4000/images/perceptron/linsep.jpg&quot; alt=&quot;linearly separable data&quot; /&gt;&lt;/p&gt;
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&quot;text-align: right;&quot;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;Birth_Year&lt;/th&gt;
+      &lt;th&gt;Percent_Lifetime_in_US_Wartime&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;1905&lt;/td&gt;
+      &lt;td&gt;0.348&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;1906&lt;/td&gt;
+      &lt;td&gt;0.351&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;1907&lt;/td&gt;
+      &lt;td&gt;0.354&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;1908&lt;/td&gt;
+      &lt;td&gt;0.357&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;1909&lt;/td&gt;
+      &lt;td&gt;0.360&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
 
-&lt;p&gt;Here’s another image using Kramdown:
-&lt;img src=&quot;http://localhost:4000/images/perceptron/linsep.jpg&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;summary-statistics&quot;&gt;Summary Statistics:&lt;/h3&gt;
 
-&lt;p&gt;Here’s some math:&lt;/p&gt;
+&lt;p&gt;Next, I take a quick look at the summary statistics to review to scope and structure of the data.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;z=x+y&lt;/script&gt;
+&lt;div&gt;
+&lt;style scoped=&quot;&quot;&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-&lt;p&gt;You can also put it inline &lt;script type=&quot;math/tex&quot;&gt;z=x+y&lt;/script&gt;&lt;/p&gt;</content><author><name>Ryan Levitt</name><email>rlevitt97@gmail.com</email></author><category term="data wrangling" /><category term="data science" /><category term="messy data" /><summary type="html">Data Wrangling, Data Science, Messy Data</summary></entry></feed>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&quot;text-align: right;&quot;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;Birth_Year&lt;/th&gt;
+      &lt;th&gt;Percent_Lifetime_in_US_Wartime&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;count&lt;/th&gt;
+      &lt;td&gt;115.000000&lt;/td&gt;
+      &lt;td&gt;115.000000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;mean&lt;/th&gt;
+      &lt;td&gt;1962.000000&lt;/td&gt;
+      &lt;td&gt;0.574635&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;std&lt;/th&gt;
+      &lt;td&gt;33.341666&lt;/td&gt;
+      &lt;td&gt;0.221140&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;min&lt;/th&gt;
+      &lt;td&gt;1905.000000&lt;/td&gt;
+      &lt;td&gt;0.348000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;25%&lt;/th&gt;
+      &lt;td&gt;1933.500000&lt;/td&gt;
+      &lt;td&gt;0.436000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;50%&lt;/th&gt;
+      &lt;td&gt;1962.000000&lt;/td&gt;
+      &lt;td&gt;0.471000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;75%&lt;/th&gt;
+      &lt;td&gt;1990.500000&lt;/td&gt;
+      &lt;td&gt;0.673000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;max&lt;/th&gt;
+      &lt;td&gt;2019.000000&lt;/td&gt;
+      &lt;td&gt;1.000000&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The data covers 115 years from 1905 to 2019. The minimum percentage spent at war is 34.8%, the mean is 57.5% with a standard deviation of 22.1%, the median is 47.1%, and the max is 100%.&lt;/p&gt;
+
+&lt;p&gt;From a visual communication perspective, two pieces of information from our summary statistics stand out. Firstly, years with 100% wartime should be of particular interest. The fact that every American born since a certain year have only ever lived in American wartime is a powerful statistic. The second is more nuanced. Given our mean and medium hover around 50%, we should pay careful attention to when we cross the 50% line. Like the 100% marker, the 50% marker is powerful because it is the point at which Americans have spent the &lt;em&gt;majority&lt;/em&gt; of their lifetime in American wartime.&lt;/p&gt;
+
+&lt;p&gt;Given the significance of this crossing point, a line graph with some explanatory features might offer an interesting take on the data.&lt;/p&gt;
+
+&lt;h3 id=&quot;initial-graph&quot;&gt;Initial Graph:&lt;/h3&gt;
+&lt;p&gt;Before I delve into some potential features, this is the base of the graph.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;plot/images/MakeoverMonday/2020W6/Tableau_Wartime_Living.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;data-exploration&quot;&gt;Data Exploration:&lt;/h3&gt;
+
+&lt;h4 id=&quot;birth-years-with-100-wartime&quot;&gt;Birth Years with 100% Wartime&lt;/h4&gt;
+
+&lt;p&gt;The first feature to look into is the 100% wartime periods&lt;/p&gt;
+
+&lt;div&gt;
+&lt;style scoped=&quot;&quot;&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&quot;text-align: right;&quot;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;Birth_Year&lt;/th&gt;
+      &lt;th&gt;Percent_Lifetime_in_US_Wartime&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;96&lt;/th&gt;
+      &lt;td&gt;2001&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;97&lt;/th&gt;
+      &lt;td&gt;2002&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;98&lt;/th&gt;
+      &lt;td&gt;2003&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;99&lt;/th&gt;
+      &lt;td&gt;2004&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;100&lt;/th&gt;
+      &lt;td&gt;2005&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;101&lt;/th&gt;
+      &lt;td&gt;2006&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;102&lt;/th&gt;
+      &lt;td&gt;2007&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;103&lt;/th&gt;
+      &lt;td&gt;2008&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;104&lt;/th&gt;
+      &lt;td&gt;2009&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;105&lt;/th&gt;
+      &lt;td&gt;2010&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;106&lt;/th&gt;
+      &lt;td&gt;2011&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;107&lt;/th&gt;
+      &lt;td&gt;2012&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;108&lt;/th&gt;
+      &lt;td&gt;2013&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;109&lt;/th&gt;
+      &lt;td&gt;2014&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;110&lt;/th&gt;
+      &lt;td&gt;2015&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;111&lt;/th&gt;
+      &lt;td&gt;2016&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;112&lt;/th&gt;
+      &lt;td&gt;2017&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;113&lt;/th&gt;
+      &lt;td&gt;2018&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;114&lt;/th&gt;
+      &lt;td&gt;2019&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Every American born since 2001 has never experienced the United States in peacetime.&lt;/p&gt;
+
+&lt;h4 id=&quot;birth-years-more-than-50-wartime&quot;&gt;Birth Years more than 50% Wartime&lt;/h4&gt;
+
+&lt;p&gt;Next, we look into the 50% line. I approached this by selecting values of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Percent_Lifetime_in_US_Wartime&lt;/code&gt; between .48 and .52. These years should give us a sense of crossing points.&lt;/p&gt;
+
+&lt;div&gt;
+&lt;style scoped=&quot;&quot;&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&quot;text-align: right;&quot;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;Birth_Year&lt;/th&gt;
+      &lt;th&gt;Percent_Lifetime_in_US_Wartime&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;36&lt;/th&gt;
+      &lt;td&gt;1941&lt;/td&gt;
+      &lt;td&gt;0.481&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;55&lt;/th&gt;
+      &lt;td&gt;1960&lt;/td&gt;
+      &lt;td&gt;0.483&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;56&lt;/th&gt;
+      &lt;td&gt;1961&lt;/td&gt;
+      &lt;td&gt;0.492&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;57&lt;/th&gt;
+      &lt;td&gt;1962&lt;/td&gt;
+      &lt;td&gt;0.500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;58&lt;/th&gt;
+      &lt;td&gt;1963&lt;/td&gt;
+      &lt;td&gt;0.509&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;59&lt;/th&gt;
+      &lt;td&gt;1964&lt;/td&gt;
+      &lt;td&gt;0.518&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;61&lt;/th&gt;
+      &lt;td&gt;1966&lt;/td&gt;
+      &lt;td&gt;0.519&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;62&lt;/th&gt;
+      &lt;td&gt;1967&lt;/td&gt;
+      &lt;td&gt;0.509&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;63&lt;/th&gt;
+      &lt;td&gt;1968&lt;/td&gt;
+      &lt;td&gt;0.500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;64&lt;/th&gt;
+      &lt;td&gt;1969&lt;/td&gt;
+      &lt;td&gt;0.490&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;74&lt;/th&gt;
+      &lt;td&gt;1979&lt;/td&gt;
+      &lt;td&gt;0.488&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;75&lt;/th&gt;
+      &lt;td&gt;1980&lt;/td&gt;
+      &lt;td&gt;0.500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;76&lt;/th&gt;
+      &lt;td&gt;1981&lt;/td&gt;
+      &lt;td&gt;0.513&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Americans born in 1963-1967 and 1981-present have spent the majority of their lives in wartime.&lt;/p&gt;
+
+&lt;h4 id=&quot;reverse-engineering-specific-war-dates-and-statistics&quot;&gt;Reverse Engineering Specific War Dates and Statistics&lt;/h4&gt;
+
+&lt;p&gt;The most important feature to include for me is probably the correspondence of specific wars to movements in the data. These actually needed to be reverse engineered from the data because the war dates that the article used did not match those you might find from quick research.&lt;/p&gt;
+
+&lt;p&gt;Wartime should, counterintuively, be associated with a decrease in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Percent_Lifetime_in_US_Wartime&lt;/code&gt;. While this may seem strange at first, the peak for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Percent_Lifetime_in_US_Wartime&lt;/code&gt; is the beginning of a war and as you look at people born later into the war, their &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Percent_Lifetime_in_US_Wartime&lt;/code&gt; is lower than those born at the beginning. The only exception to this is in an ongoing, current war. In this case, the value will stagnate. This logic also holds for peacetime. Increases in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Percent_Lifetime_in_US_Wartime&lt;/code&gt; are then always associated with peacetime and decreases or stagnancy are always associated with wartime. The code here was probably the most complex of any in this small project with some nested &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;np.where&lt;/code&gt; and calculating both forward and backward column diffs to make sure that years at both the maxima and minima are labeled as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wartime&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div&gt;
+&lt;style scoped=&quot;&quot;&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&quot;text-align: right;&quot;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;Birth_Year&lt;/th&gt;
+      &lt;th&gt;Percent_Lifetime_in_US_Wartime&lt;/th&gt;
+      &lt;th&gt;War_State&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;1905&lt;/td&gt;
+      &lt;td&gt;0.348&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;1906&lt;/td&gt;
+      &lt;td&gt;0.351&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;1907&lt;/td&gt;
+      &lt;td&gt;0.354&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;1908&lt;/td&gt;
+      &lt;td&gt;0.357&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;1909&lt;/td&gt;
+      &lt;td&gt;0.360&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;5&lt;/th&gt;
+      &lt;td&gt;1910&lt;/td&gt;
+      &lt;td&gt;0.364&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;6&lt;/th&gt;
+      &lt;td&gt;1911&lt;/td&gt;
+      &lt;td&gt;0.367&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;td&gt;1912&lt;/td&gt;
+      &lt;td&gt;0.370&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;8&lt;/th&gt;
+      &lt;td&gt;1913&lt;/td&gt;
+      &lt;td&gt;0.374&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;9&lt;/th&gt;
+      &lt;td&gt;1914&lt;/td&gt;
+      &lt;td&gt;0.377&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;10&lt;/th&gt;
+      &lt;td&gt;1915&lt;/td&gt;
+      &lt;td&gt;0.381&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;11&lt;/th&gt;
+      &lt;td&gt;1916&lt;/td&gt;
+      &lt;td&gt;0.385&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;12&lt;/th&gt;
+      &lt;td&gt;1917&lt;/td&gt;
+      &lt;td&gt;0.388&lt;/td&gt;
+      &lt;td&gt;wartime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;13&lt;/th&gt;
+      &lt;td&gt;1918&lt;/td&gt;
+      &lt;td&gt;0.382&lt;/td&gt;
+      &lt;td&gt;wartime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;14&lt;/th&gt;
+      &lt;td&gt;1919&lt;/td&gt;
+      &lt;td&gt;0.376&lt;/td&gt;
+      &lt;td&gt;wartime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;15&lt;/th&gt;
+      &lt;td&gt;1920&lt;/td&gt;
+      &lt;td&gt;0.380&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;16&lt;/th&gt;
+      &lt;td&gt;1921&lt;/td&gt;
+      &lt;td&gt;0.384&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;17&lt;/th&gt;
+      &lt;td&gt;1922&lt;/td&gt;
+      &lt;td&gt;0.388&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;18&lt;/th&gt;
+      &lt;td&gt;1923&lt;/td&gt;
+      &lt;td&gt;0.392&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;19&lt;/th&gt;
+      &lt;td&gt;1924&lt;/td&gt;
+      &lt;td&gt;0.396&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wartime&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;peacetime&lt;/code&gt; labels, I moved through each set of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wartime&lt;/code&gt; birth years and attached a war label.&lt;/p&gt;
+
+&lt;div&gt;
+&lt;style scoped=&quot;&quot;&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&quot;text-align: right;&quot;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;Birth_Year&lt;/th&gt;
+      &lt;th&gt;Percent_Lifetime_in_US_Wartime&lt;/th&gt;
+      &lt;th&gt;War_State&lt;/th&gt;
+      &lt;th&gt;War&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;1905&lt;/td&gt;
+      &lt;td&gt;0.348&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;1906&lt;/td&gt;
+      &lt;td&gt;0.351&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;1907&lt;/td&gt;
+      &lt;td&gt;0.354&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;1908&lt;/td&gt;
+      &lt;td&gt;0.357&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;1909&lt;/td&gt;
+      &lt;td&gt;0.360&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;5&lt;/th&gt;
+      &lt;td&gt;1910&lt;/td&gt;
+      &lt;td&gt;0.364&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;6&lt;/th&gt;
+      &lt;td&gt;1911&lt;/td&gt;
+      &lt;td&gt;0.367&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;td&gt;1912&lt;/td&gt;
+      &lt;td&gt;0.370&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;8&lt;/th&gt;
+      &lt;td&gt;1913&lt;/td&gt;
+      &lt;td&gt;0.374&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;9&lt;/th&gt;
+      &lt;td&gt;1914&lt;/td&gt;
+      &lt;td&gt;0.377&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;10&lt;/th&gt;
+      &lt;td&gt;1915&lt;/td&gt;
+      &lt;td&gt;0.381&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;11&lt;/th&gt;
+      &lt;td&gt;1916&lt;/td&gt;
+      &lt;td&gt;0.385&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;12&lt;/th&gt;
+      &lt;td&gt;1917&lt;/td&gt;
+      &lt;td&gt;0.388&lt;/td&gt;
+      &lt;td&gt;wartime&lt;/td&gt;
+      &lt;td&gt;WW1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;13&lt;/th&gt;
+      &lt;td&gt;1918&lt;/td&gt;
+      &lt;td&gt;0.382&lt;/td&gt;
+      &lt;td&gt;wartime&lt;/td&gt;
+      &lt;td&gt;WW1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;14&lt;/th&gt;
+      &lt;td&gt;1919&lt;/td&gt;
+      &lt;td&gt;0.376&lt;/td&gt;
+      &lt;td&gt;wartime&lt;/td&gt;
+      &lt;td&gt;WW1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;15&lt;/th&gt;
+      &lt;td&gt;1920&lt;/td&gt;
+      &lt;td&gt;0.380&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;16&lt;/th&gt;
+      &lt;td&gt;1921&lt;/td&gt;
+      &lt;td&gt;0.384&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;17&lt;/th&gt;
+      &lt;td&gt;1922&lt;/td&gt;
+      &lt;td&gt;0.388&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;18&lt;/th&gt;
+      &lt;td&gt;1923&lt;/td&gt;
+      &lt;td&gt;0.392&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;19&lt;/th&gt;
+      &lt;td&gt;1924&lt;/td&gt;
+      &lt;td&gt;0.396&lt;/td&gt;
+      &lt;td&gt;peacetime&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Finally, I looked at some of the summary statistics grouped by war for some additional insights.&lt;/p&gt;
+
+&lt;div&gt;
+&lt;style scoped=&quot;&quot;&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th colspan=&quot;8&quot; halign=&quot;left&quot;&gt;Birth_Year&lt;/th&gt;
+      &lt;th colspan=&quot;8&quot; halign=&quot;left&quot;&gt;Percent_Lifetime_in_US_Wartime&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;count&lt;/th&gt;
+      &lt;th&gt;mean&lt;/th&gt;
+      &lt;th&gt;std&lt;/th&gt;
+      &lt;th&gt;min&lt;/th&gt;
+      &lt;th&gt;25%&lt;/th&gt;
+      &lt;th&gt;50%&lt;/th&gt;
+      &lt;th&gt;75%&lt;/th&gt;
+      &lt;th&gt;max&lt;/th&gt;
+      &lt;th&gt;count&lt;/th&gt;
+      &lt;th&gt;mean&lt;/th&gt;
+      &lt;th&gt;std&lt;/th&gt;
+      &lt;th&gt;min&lt;/th&gt;
+      &lt;th&gt;25%&lt;/th&gt;
+      &lt;th&gt;50%&lt;/th&gt;
+      &lt;th&gt;75%&lt;/th&gt;
+      &lt;th&gt;max&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;War&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Afghanistan War&lt;/th&gt;
+      &lt;td&gt;19.0&lt;/td&gt;
+      &lt;td&gt;2010.0&lt;/td&gt;
+      &lt;td&gt;5.627314&lt;/td&gt;
+      &lt;td&gt;2001.0&lt;/td&gt;
+      &lt;td&gt;2005.50&lt;/td&gt;
+      &lt;td&gt;2010.0&lt;/td&gt;
+      &lt;td&gt;2014.50&lt;/td&gt;
+      &lt;td&gt;2019.0&lt;/td&gt;
+      &lt;td&gt;19.0&lt;/td&gt;
+      &lt;td&gt;1.000000&lt;/td&gt;
+      &lt;td&gt;0.000000&lt;/td&gt;
+      &lt;td&gt;1.000&lt;/td&gt;
+      &lt;td&gt;1.00000&lt;/td&gt;
+      &lt;td&gt;1.0000&lt;/td&gt;
+      &lt;td&gt;1.00000&lt;/td&gt;
+      &lt;td&gt;1.000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Gulf War&lt;/th&gt;
+      &lt;td&gt;2.0&lt;/td&gt;
+      &lt;td&gt;1991.5&lt;/td&gt;
+      &lt;td&gt;0.707107&lt;/td&gt;
+      &lt;td&gt;1991.0&lt;/td&gt;
+      &lt;td&gt;1991.25&lt;/td&gt;
+      &lt;td&gt;1991.5&lt;/td&gt;
+      &lt;td&gt;1991.75&lt;/td&gt;
+      &lt;td&gt;1992.0&lt;/td&gt;
+      &lt;td&gt;2.0&lt;/td&gt;
+      &lt;td&gt;0.684500&lt;/td&gt;
+      &lt;td&gt;0.007778&lt;/td&gt;
+      &lt;td&gt;0.679&lt;/td&gt;
+      &lt;td&gt;0.68175&lt;/td&gt;
+      &lt;td&gt;0.6845&lt;/td&gt;
+      &lt;td&gt;0.68725&lt;/td&gt;
+      &lt;td&gt;0.690&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Vietnam War&lt;/th&gt;
+      &lt;td&gt;10.0&lt;/td&gt;
+      &lt;td&gt;1969.5&lt;/td&gt;
+      &lt;td&gt;3.027650&lt;/td&gt;
+      &lt;td&gt;1965.0&lt;/td&gt;
+      &lt;td&gt;1967.25&lt;/td&gt;
+      &lt;td&gt;1969.5&lt;/td&gt;
+      &lt;td&gt;1971.75&lt;/td&gt;
+      &lt;td&gt;1974.0&lt;/td&gt;
+      &lt;td&gt;10.0&lt;/td&gt;
+      &lt;td&gt;0.483400&lt;/td&gt;
+      &lt;td&gt;0.031045&lt;/td&gt;
+      &lt;td&gt;0.435&lt;/td&gt;
+      &lt;td&gt;0.46075&lt;/td&gt;
+      &lt;td&gt;0.4850&lt;/td&gt;
+      &lt;td&gt;0.50675&lt;/td&gt;
+      &lt;td&gt;0.527&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Korean War&lt;/th&gt;
+      &lt;td&gt;5.0&lt;/td&gt;
+      &lt;td&gt;1952.0&lt;/td&gt;
+      &lt;td&gt;1.581139&lt;/td&gt;
+      &lt;td&gt;1950.0&lt;/td&gt;
+      &lt;td&gt;1951.00&lt;/td&gt;
+      &lt;td&gt;1952.0&lt;/td&gt;
+      &lt;td&gt;1953.00&lt;/td&gt;
+      &lt;td&gt;1954.0&lt;/td&gt;
+      &lt;td&gt;5.0&lt;/td&gt;
+      &lt;td&gt;0.455600&lt;/td&gt;
+      &lt;td&gt;0.012661&lt;/td&gt;
+      &lt;td&gt;0.439&lt;/td&gt;
+      &lt;td&gt;0.44800&lt;/td&gt;
+      &lt;td&gt;0.4560&lt;/td&gt;
+      &lt;td&gt;0.46400&lt;/td&gt;
+      &lt;td&gt;0.471&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;WW2&lt;/th&gt;
+      &lt;td&gt;6.0&lt;/td&gt;
+      &lt;td&gt;1943.5&lt;/td&gt;
+      &lt;td&gt;1.870829&lt;/td&gt;
+      &lt;td&gt;1941.0&lt;/td&gt;
+      &lt;td&gt;1942.25&lt;/td&gt;
+      &lt;td&gt;1943.5&lt;/td&gt;
+      &lt;td&gt;1944.75&lt;/td&gt;
+      &lt;td&gt;1946.0&lt;/td&gt;
+      &lt;td&gt;6.0&lt;/td&gt;
+      &lt;td&gt;0.463833&lt;/td&gt;
+      &lt;td&gt;0.013106&lt;/td&gt;
+      &lt;td&gt;0.446&lt;/td&gt;
+      &lt;td&gt;0.45500&lt;/td&gt;
+      &lt;td&gt;0.4645&lt;/td&gt;
+      &lt;td&gt;0.47250&lt;/td&gt;
+      &lt;td&gt;0.481&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;WW1&lt;/th&gt;
+      &lt;td&gt;3.0&lt;/td&gt;
+      &lt;td&gt;1918.0&lt;/td&gt;
+      &lt;td&gt;1.000000&lt;/td&gt;
+      &lt;td&gt;1917.0&lt;/td&gt;
+      &lt;td&gt;1917.50&lt;/td&gt;
+      &lt;td&gt;1918.0&lt;/td&gt;
+      &lt;td&gt;1918.50&lt;/td&gt;
+      &lt;td&gt;1919.0&lt;/td&gt;
+      &lt;td&gt;3.0&lt;/td&gt;
+      &lt;td&gt;0.382000&lt;/td&gt;
+      &lt;td&gt;0.006000&lt;/td&gt;
+      &lt;td&gt;0.376&lt;/td&gt;
+      &lt;td&gt;0.37900&lt;/td&gt;
+      &lt;td&gt;0.3820&lt;/td&gt;
+      &lt;td&gt;0.38500&lt;/td&gt;
+      &lt;td&gt;0.388&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We see here how different wars extended wartime experience for Americans. The Vietnam War and Afghanistan Wars are distinctly long. We also see here that the Vietnam War manages to temporarily push the percentage in wartime above 50% for a short period in the mid 1960s before the percentage resurges in peacetime births near the Afghanistan War.&lt;/p&gt;
+
+&lt;h3 id=&quot;deeper-data-graph&quot;&gt;Deeper Data Graph:&lt;/h3&gt;
+
+&lt;p&gt;I made a quick pyplot graph to confirm my work before heading over to Tableau.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/MakeoverMonday/2020W6/pyplot_Wartime_Living.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The decreases properly match their wars and includes extrema.&lt;/p&gt;
+
+&lt;h3 id=&quot;tableau-graph&quot;&gt;Tableau Graph:&lt;/h3&gt;
+
+&lt;p&gt;My Tableau visualization is published &lt;a href=&quot;https://public.tableau.com/views/2020W6-US_Wartime_Living/USWartimeLife?:display_count=y&amp;amp;publish=yes&amp;amp;:origin=viz_share_link&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/MakeoverMonday/2020W6/Tableau_Wartime_Living.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+
+&lt;p&gt;I think the explicit naming of the wars and clearer representation of how the percentages shift over time is interesting. I think my visualization is ultimately successful in contributing a new perspective on the data. I think with some more experience with Tableau and more time invested in this project, I would make a few changes to further emphasize some of the points I established in the exploration phase. For example, I could more explicitly point with textboxes and arrows to the Afghanistan War’s 2001 100% wartime statistic and the two 50% crossing points. The biggest weakness for my visualization is the counterintuitive nature of decreasing percentages in wartime. I did not really anticipate how the data actually works against a line graph and that its computation seems meant more for looking up your own birth year rather than looking at trends across birth years. I think this is something to learn from. My visualization succeeds at the general picture of the spread of American wars over the last century but if a viewer spends more time trying to properly interpret it, I think it actually becomes more confusing.&lt;/p&gt;
+
+&lt;p&gt;Overall, I really enjoyed this first attempt at Makeover Monday and am really happy to be making progress with Tableau. I’m excited for next week.&lt;/p&gt;</content><author><name>Ryan Levitt</name><email>rlevitt97@gmail.com</email></author><category term="makeover monday" /><category term="data visualization" /><category term="tableau" /><category term="python" /><summary type="html">Visualizing US Wartime by Year of Birth</summary></entry></feed>

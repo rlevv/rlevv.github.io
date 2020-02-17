@@ -1,6 +1,6 @@
 var store = [{
-        "title": "Data Wrangling Project",
-        "excerpt":"H1 HeadingH2 HeadingH3 HeadingHere’s some basic text.And here’s some italicsHere’s some bold text.What about a link?Here’s a bulleted list: First item Second item Third itemHere’s a numbered list: First Second ThirdPython code block: import numpy as np def test_function(x, y): z = np.sum(x,y) return zR code block:library(tidyverse)df &lt;- read_csv(\"some_file.csv\")head(df)Here’s some...","categories": [],
-        "tags": ["data wrangling","data science","messy data"],
-        "url": "http://localhost:4000/perceptron/",
+        "title": "Makeover Monday 2020 Week 6 –– What Percentage of Your Life Has Been Spent in American Wartime?",
+        "excerpt":"For this week’s challenge, we are looking at the percentage of lifetime according to birth year where the USA was at war.Source Article: Nearly a quarter of Americans have never experienced the U.S. in a time of peaceData Source: Washington PostMakeover Monday Data: data.worldMy Github Repository: US Wartime Living RepoMy...","categories": [],
+        "tags": ["makeover monday","data visualization","tableau","python"],
+        "url": "http://localhost:4000/MoM1/",
         "teaser":null}]
